@@ -7,7 +7,7 @@
 
 MainWindow::MainWindow( QWidget *parent ) :
                         QMainWindow( parent ),
-                        ui( new Ui::MainWindow )
+                        ui( new Ui::MainWindow ),counter (10)
 {
     ui->setupUi( this );
     setDefaults();
@@ -44,6 +44,7 @@ void MainWindow::on_btnClickMe_pressed()
     {
         ui->lblClickMe->setText("Click on the Click Me! button if you can!");
         isClicked = false;
+        counter++;
     }
 
     int btnWidth  = ui->btnClickMe->width();
@@ -63,6 +64,12 @@ void MainWindow::on_btnClickMe_pressed()
     if( y == 0 ) y = 8;
 
     ui->btnClickMe->setGeometry( x, y, btnWidth, btnHeight );
+
+    newbutton = new QPushButton(this);
+    newbutton->setText("Click on me too!");
+    newbutton->setGeometry(x+counter, y+counter, btnWidth, btnHeight );
+    newbutton->show();
+    connect (newbutton,SIGNAL(clicked()),this,SLOT(on_btnClickMe_pressed()));
 }
 
 void MainWindow::on_btnClickMe_released()
