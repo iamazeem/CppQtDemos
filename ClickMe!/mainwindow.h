@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+class QPushButton;
 
 namespace Ui
 {
@@ -23,7 +24,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     bool isClicked;
-
+    int counter;
+    QPushButton * newbutton;
     void setDefaults();
 };
 
